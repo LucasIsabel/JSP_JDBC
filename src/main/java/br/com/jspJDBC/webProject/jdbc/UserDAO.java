@@ -61,11 +61,11 @@ public class UserDAO {
 	 * @param id
 	 */
 	
-	public void excluir(Integer id) {
+	public void delete(Integer id) {
 		String sql = "delete from usuario where id = ?";
 
 		try (PreparedStatement prepare = con.prepareStatement(sql)) {
-			prepare.setInt(1, 1);
+			prepare.setInt(1, id);
 			prepare.execute();
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -132,7 +132,7 @@ public class UserDAO {
 		try(PreparedStatement prepare = con.prepareStatement(sql)){
 			ResultSet result = prepare.executeQuery();
 			while(result.next()){
-				list.add(new User(result.getString("name"), result.getString("username"), result.getString("password")));
+				list.add(new User(result.getInt("id"),result.getString("name"), result.getString("username"), result.getString("password")));
 			}
 			return list;
 		}catch(SQLException e){

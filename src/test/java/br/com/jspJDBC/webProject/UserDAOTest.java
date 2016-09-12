@@ -6,7 +6,7 @@ import br.com.jspJDBC.webProject.jdbc.UserDAO;
 public class UserDAOTest {
 
 	public static void main(String [] args){
-		testAuth("Lucas Isabel","321");
+		testDelete();
 	}
 	
 	public static void testRegister(){
@@ -20,13 +20,13 @@ public class UserDAOTest {
 		User user = new User("Vivian","Isabel","321");
 		UserDAO userDao = new UserDAO();
 		userDao.update(user);
-		System.out.println("Alterado co mSucesso");
+		System.out.println("Alterado com Sucesso");
 	}
 	
-	public static void testExcluir(){
+	public static void testDelete(){
 		UserDAO userDao = new UserDAO();
-		userDao.excluir(1);
-		System.out.println("Excluido com Sucesso");
+		userDao.delete(6);
+		System.out.println("Excluido com Sucesso !");
 	}
 	
 	public static void testSalvar(){
