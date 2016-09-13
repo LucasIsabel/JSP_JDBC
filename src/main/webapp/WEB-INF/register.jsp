@@ -40,6 +40,8 @@
 </head>
 <body>
 
+	<%@ include file="menu.jsp" %>
+
 	<%
 		    User user = (User)request.getAttribute("update");
 			String name = (user != null) ? user.getName() : ""; 

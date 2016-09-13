@@ -16,8 +16,11 @@
 </head>
 <body>
 
+	<%@ include file="menu.jsp" %>
+
+
 	<div class="container">
-		<table class="mdl-data-table mdl-js-data-table mdl-shadow--2dp">
+		<table class="mdl-data-table mdl-js-data-table mdl-shadow--2dp form">
 			<thead>
 				<tr>
 					<th class="mdl-data-table__cell--non-numeric">Name</th>
@@ -59,6 +62,7 @@
 			</tbody>	
 		</table>
 	</div>
+	
 	
 	<script defer src="https://code.getmdl.io/1.2.1/material.min.js"></script>
 	<script>

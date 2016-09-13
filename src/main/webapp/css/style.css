@@ -1,10 +1,11 @@
 .container{
-	width: 550px;
+	width: 800px;
 	height: auto;
-	padding: 20px;
-	margin-left: auto;
-	margin-right: auto;
-	margin-top: 10px;
-	text-align:center;
-	background-color:#ccc; 
+ 	margin-left: auto;
+ 	margin-right: auto;	
+ 	padding-top: 100px;
+}
+
+.container .form{
+	margin: auto;
 }
