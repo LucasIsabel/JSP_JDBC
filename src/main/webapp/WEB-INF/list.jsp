@@ -40,7 +40,7 @@
 			      	<td><%= user.getUsername() %></td>
 			      	<td><%= user.getPassword() %></td>
 			      	<td>
-			      		<a href="user?action=delete&id=<%= user.getId() %>">
+			      		<a href="javascript:confirmDelete(<%= user.getId() %>)">
 			      			<button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent">Delete</button>
 			      		</a>
 			      	</td>
@@ -61,5 +61,12 @@
 	</div>
 	
 	<script defer src="https://code.getmdl.io/1.2.1/material.min.js"></script>
+	<script>
+		function confirmDelete(id){
+			if(window.confirm("Are you sure ?")){
+				location.href="user?action=delete&id="+id;
+			}
+		}
+	</script>
 </body>
 </html>

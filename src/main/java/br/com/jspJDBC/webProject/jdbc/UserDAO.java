@@ -79,7 +79,7 @@ public class UserDAO {
 	 */
 	
 	public void save(User user){
-		if(user.getId() != null){
+		if(user.getId() != null && user.getId() != 0){
 			update(user);
 		}else{
 			register(user);

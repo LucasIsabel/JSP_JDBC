@@ -21,20 +21,22 @@ public class RegisterController extends HttpServlet{
 	
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		RequestDispatcher requestDispatcher = req.getRequestDispatcher("register.html");
+		RequestDispatcher requestDispatcher = req.getRequestDispatcher("WEB-INF/register.jsp");
 		requestDispatcher.forward(req,resp);
 	}
 	
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		int id = Integer.valueOf(req.getParameter("id"));
 		name = req.getParameter("name");
 		username = req.getParameter("username");
 		password = req.getParameter("password");
-		
+
+		User user = new User(id,name, username, password);
+
 		UserDAO userdao = new UserDAO();
-		userdao.register(new User(name, username, password));
-		
-		resp.getWriter().print("<b> Registered Successful </b>");
+		userdao.save(user);
+		resp.sendRedirect("user?action=list");
 	}
 	
 }

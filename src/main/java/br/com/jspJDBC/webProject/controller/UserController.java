@@ -17,6 +17,7 @@ import br.com.jspJDBC.webProject.jdbc.UserDAO;
 public class UserController extends HttpServlet {
 
 	private static final long serialVersionUID = 1L;
+	private int id;
 	private String name, username, password;
 
 	@Override
@@ -37,14 +38,19 @@ public class UserController extends HttpServlet {
 				String id = req.getParameter("id");
 				if (id != null) {
 					userdao.delete(Integer.valueOf(id));
-					req.setAttribute("list", userdao.getAll());
-					requestDispatcher.forward(req, resp);
+					resp.sendRedirect("user?action=list");
 				} else {
 					resp.getWriter().println("<b> No ID </b>");
 				}
 			} else if (action.equals("list")) {
 				req.setAttribute("list", userdao.getAll());
 				requestDispatcher.forward(req, resp);
+				
+			} else if(action.equals("update")){
+				String id = req.getParameter("id");
+				req.setAttribute("update", userdao.getById(Integer.valueOf(id)));
+				RequestDispatcher register = req.getRequestDispatcher("WEB-INF/register.jsp");
+				register.forward(req,resp);
 				
 			} else {
 				resp.getWriter().println("No parameters");
@@ -54,20 +60,6 @@ public class UserController extends HttpServlet {
 		}
 	}
 
-	@Override
-	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-
-		name = req.getParameter("name");
-		username = req.getParameter("username");
-		password = req.getParameter("password");
-
-		User user = new User(name, username, password);
-
-		UserDAO userdao = new UserDAO();
-		userdao.register(user);
-		System.out.println("Cadastrado com sucesso");
-
-	}
 
 	@Override
 	protected void doDelete(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
